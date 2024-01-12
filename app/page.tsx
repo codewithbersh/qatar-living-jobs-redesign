@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { UserButton } from "@clerk/nextjs";
 
 const HomePage = () => {
   return (
     <div>
-      <Button>Hello</Button>
+      <UserButton />
     </div>
   );
 };
