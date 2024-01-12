@@ -29,7 +29,7 @@ export const DesktopNavigation = ({
       {userId ? (
         <UserButton afterSignOutUrl="/" />
       ) : (
-        <Button variant="brand">
+        <Button variant="brand" asChild>
           <Link href="/sign-in">Sign in</Link>
         </Button>
       )}

@@ -7,8 +7,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
 
-import { Navigation } from "@/components/navigation/navigation";
-
 const font = GeistSans;
 
 export const metadata: Metadata = {
@@ -25,7 +23,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={cn("bg-background antialiased", font.className)}>
-          <Navigation />
           <main>{children}</main>
         </body>
       </html>
