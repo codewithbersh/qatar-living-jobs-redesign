@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 
 import { GeistSans } from "geist/font/sans";
-import { ClerkProvider } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
 
@@ -22,14 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={cn("bg-background antialiased", font.className)}>
-          <Providers>
-            <main>{children}</main>
-          </Providers>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={cn("bg-background antialiased", font.className)}>
+        <Providers>
+          <main>{children}</main>
+        </Providers>
+      </body>
+    </html>
   );
 }

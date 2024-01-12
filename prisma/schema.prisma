@@ -8,7 +8,39 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Test {
-  id    String @id @default(cuid())
-  hello String
+model Company {
+  id String @id @default(cuid())
+
+  name       String
+  websiteUrl String?
+  logoUrl    String?
+  email      String?
+  approved   Boolean @default(false)
+
+  jobs Job[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Job {
+  id String @id @default(cuid())
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  title             String
+  description       String  @db.Text
+  type              String
+  level             String
+  applicantLocation String
+  salaryFrom        Int
+  salaryTo          Int
+  applicationUrl    String
+  approved          Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId])
 }
