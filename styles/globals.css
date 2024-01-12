@@ -39,6 +39,8 @@ body,
     --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
+
+    --brand-primary: 342 74% 31%;
   }
 
   .dark {
@@ -69,6 +71,8 @@ body,
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
+
+    --brand-primary: 342 74% 31%;
   }
 }
 
