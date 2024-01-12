@@ -1,11 +1,8 @@
-import { UserButton } from "@clerk/nextjs";
+import { db } from "@/lib/db";
 
-const JobsPage = () => {
-  return (
-    <div className="bg-red-500">
-      <UserButton afterSignOutUrl="/" />
-    </div>
-  );
+const JobsPage = async () => {
+  const data = await db.test.findMany({});
+  return <div className="bg-red-500">{data.map((item) => item.hello)}</div>;
 };
 
 export default JobsPage;
