@@ -1,8 +1,11 @@
-import { db } from "@/lib/db";
+"use client";
 
-const JobsPage = async () => {
-  const data = await db.test.findMany({});
-  return <div className="bg-red-500">{data.map((item) => item.hello)}</div>;
+import { trpc } from "@/app/_trpc/client";
+
+const JobsPage = () => {
+  const { data: message } = trpc.message.useQuery();
+
+  return <div>{message}</div>;
 };
 
 export default JobsPage;
