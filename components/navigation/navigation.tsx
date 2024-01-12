@@ -26,7 +26,7 @@ export const Navigation = () => {
   ];
 
   return (
-    <div className="">
+    <div className="border-b shadow-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <Link href="/" className="flex items-center">
           <Logo />
