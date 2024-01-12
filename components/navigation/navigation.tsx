@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { auth } from "@clerk/nextjs";
+
+import { Menu } from "lucide-react";
 
 import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-import { DesktopNavigation } from "./desktop-navigation";
-import { MobileNavigation } from "./mobile-navigation";
+import { Routes } from "./routes";
 
 export type TRoute = {
   href: string;
@@ -12,19 +14,6 @@ export type TRoute = {
 };
 
 export const Navigation = () => {
-  const { userId } = auth();
-
-  const routes = [
-    {
-      href: "/jobs",
-      label: "Jobs",
-    },
-    {
-      href: "/companies",
-      label: "Companies",
-    },
-  ];
-
   return (
     <div className="border-b shadow-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4">
@@ -36,8 +25,23 @@ export const Navigation = () => {
           </h1>
         </Link>
 
-        <DesktopNavigation routes={routes} userId={userId} />
-        <MobileNavigation routes={routes} userId={userId} />
+        <Sheet>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="brand" size="icon">
+              <Menu className="" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <div className="flex h-full flex-col gap-4">
+              <Logo />
+              <Routes />
+            </div>
+          </SheetContent>
+        </Sheet>
+
+        <div className="hidden items-center gap-4 md:flex">
+          <Routes />
+        </div>
       </nav>
     </div>
   );
