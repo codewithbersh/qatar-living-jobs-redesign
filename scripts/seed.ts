@@ -49,103 +49,121 @@ const companies = [
 
 const jobs = [
   {
-    id: "qa-aircraft-engineer",
-    companyId: "qatar-airways",
-    title: "Aircraft Engineer",
-    description: `
-        ## Job Description
-  
-        Qatar Airways is looking for a skilled Aircraft Engineer to join our dynamic team. In this role, you will be responsible for ensuring the airworthiness of our fleet and implementing maintenance procedures. If you have a passion for aviation and a strong technical background, we want to hear from you!
-  
-        ### Responsibilities
-  
-        - Conduct regular inspections and maintenance on aircraft.
-        - Diagnose and troubleshoot mechanical and electrical issues.
-        - Collaborate with cross-functional teams to ensure compliance with safety standards.
-        - Keep detailed records of maintenance activities.
-  
-        ### Requirements
-  
-        - Bachelor's degree in Aerospace Engineering or related field.
-        - Proven experience as an Aircraft Engineer.
-        - Strong knowledge of aviation regulations and safety standards.
-        - Excellent problem-solving skills.
-  
-        ## Type: Full-time
-        ## Level: Senior
-        ## Applicant Location: In-country
-        ## Salary: Competitive
-      `,
-    type: "Full-time",
-    level: "Senior",
-    applicantLocation: "In-country",
-    salary: "QAR 15,000 – 17,000",
-  },
-  {
     id: "qa-software-developer",
     companyId: "qatar-airways",
     title: "Software Developer",
-    description: `
-        ## Job Description
-  
-        Qatar Airways is seeking a talented Software Developer to contribute to the development of cutting-edge aviation software solutions. As a member of our IT team, you will play a key role in designing and implementing software applications that enhance the efficiency of our operations.
-  
-        ### Responsibilities
-  
-        - Collaborate with cross-functional teams to gather and define software requirements.
-        - Design, code, test, and deploy high-quality software solutions.
-        - Troubleshoot and resolve software issues.
-        - Stay updated on industry trends and technologies.
-  
-        ### Requirements
-  
-        - Bachelor's degree in Computer Science or related field.
-        - Proven experience in software development.
-        - Proficiency in programming languages such as Java or C++.
-        - Strong problem-solving and communication skills.
-  
-        ## Type: Full-time
-        ## Level: Entry
-        ## Applicant Location: In-country
-        ## Salary: Competitive
-      `,
     type: "Full-time",
     level: "Entry",
     applicantLocation: "In-country",
     salary: "QAR 10,000 – 12,000",
+    description: `
+## Job Description
+
+Qatar Airways is seeking a talented and motivated individual to join our team as a **Software Developer** at the entry level. As a Software Developer, you will be an integral part of our IT department, contributing to the development and enhancement of software solutions that drive the success of one of the world's leading airlines.
+
+### Responsibilities
+
+- Collaborate with cross-functional teams to understand software requirements
+- Develop, test, and maintain high-quality software applications
+- Debug and troubleshoot software issues to ensure optimal performance
+- Participate in code reviews and provide constructive feedback
+- Stay updated on industry trends and incorporate best practices in software development
+
+### Requirements
+
+- Bachelor's degree in Computer Science, Software Engineering, or related field
+- Strong understanding of programming languages such as Java, Python, or JavaScript
+- Familiarity with software development methodologies and tools
+- Ability to work collaboratively in a team environment
+- Eagerness to learn and adapt to new technologies
+
+### Benefits
+
+- Competitive salary
+- Professional development opportunities
+- Comprehensive health and wellness benefits
+- Employee travel perks
+
+If you are a passionate and driven individual with a desire to contribute to the world of aviation through software development, we encourage you to apply for this entry-level Software Developer position at Qatar Airways.
+    `,
   },
   {
     id: "qa-marketing-specialist",
     companyId: "qatar-airways",
     title: "Marketing Specialist",
-    description: `
-        ## Job Description
-  
-        Join Qatar Airways as a Marketing Specialist and be part of a team responsible for promoting our brand and services globally. In this role, you will develop and implement marketing strategies to drive awareness and engagement.
-  
-        ### Responsibilities
-  
-        - Develop and execute marketing campaigns across various channels.
-        - Conduct market research to identify trends and opportunities.
-        - Collaborate with creative teams to produce compelling marketing materials.
-        - Analyze and report on the performance of marketing initiatives.
-  
-        ### Requirements
-  
-        - Bachelor's degree in Marketing or related field.
-        - Proven experience in marketing, with a focus on digital channels.
-        - Strong analytical and project management skills.
-        - Excellent communication and interpersonal skills.
-  
-        ## Type: Full-time
-        ## Level: Mid
-        ## Applicant Location: In-country
-        ## Salary: Competitive
-      `,
     type: "Full-time",
-    level: "Mid",
+    level: "Mid-level",
     applicantLocation: "In-country",
-    salary: "QAR 8,000 - 12,000",
+    salary: "QAR 15,000 – 18,000",
+    description: `
+## Job Description
+
+Qatar Airways is looking for an experienced **Marketing Specialist** to join our dynamic marketing team. As a Marketing Specialist, you will play a crucial role in developing and implementing marketing strategies to promote our brand and services.
+
+### Responsibilities
+
+- Collaborate with cross-functional teams to create and execute marketing campaigns
+- Conduct market research to identify trends and opportunities
+- Develop engaging content for various marketing channels
+- Monitor and analyze the performance of marketing initiatives
+- Work closely with external agencies and partners
+
+### Requirements
+
+- Bachelor's degree in Marketing, Business, or a related field
+- Proven experience in marketing, with a focus on digital marketing
+- Strong analytical and creative skills
+- Excellent communication and interpersonal abilities
+- Ability to work in a fast-paced and dynamic environment
+
+### Benefits
+
+- Competitive salary
+- Opportunities for career advancement
+- Health and wellness benefits
+- Employee discounts on travel
+
+If you are a results-driven marketing professional looking to contribute to the success of a global airline, we invite you to apply for the Marketing Specialist position at Qatar Airways.
+    `,
+  },
+  {
+    id: "qa-customer-service-representative",
+    companyId: "qatar-airways",
+    title: "Customer Service Representative",
+    type: "Full-time",
+    level: "Entry",
+    applicantLocation: "In-country",
+    salary: "QAR 8,000 – 10,000",
+    description: `
+## Job Description
+
+Qatar Airways is hiring enthusiastic individuals to join our team as **Customer Service Representatives**. In this role, you will be the first point of contact for our valued customers, providing excellent service and ensuring a positive experience.
+
+### Responsibilities
+
+- Assist customers with inquiries, bookings, and issue resolution
+- Handle customer complaints and provide timely solutions
+- Maintain accurate records of customer interactions
+- Collaborate with other departments to address customer needs
+- Stay informed about products, services, and policies
+
+### Requirements
+
+- High school diploma or equivalent
+- Excellent communication and interpersonal skills
+- Ability to handle challenging situations with empathy
+- Basic computer skills
+- Willingness to work in a shift-based environment, including weekends and holidays
+
+### Benefits
+
+- Competitive salary
+- Training and development opportunities
+- Health and wellness benefits
+- Employee discounts on travel
+
+If you are a people-oriented individual with a passion for providing exceptional customer service, we encourage you to apply for the Customer Service Representative position at Qatar Airways.
+    `,
   },
 ];
 
@@ -162,8 +180,21 @@ async function main() {
         type,
         salary,
       }) => {
-        await database.job.create({
-          data: {
+        await database.job.upsert({
+          where: {
+            id,
+          },
+          update: {
+            id,
+            applicantLocation,
+            description,
+            level,
+            salary,
+            title,
+            type,
+            companyId,
+          },
+          create: {
             id,
             applicantLocation,
             description,

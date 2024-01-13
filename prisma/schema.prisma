@@ -38,6 +38,7 @@ model Job {
 
   // TODO: Add Category
   // TODO: Add isPromoted
+  // TODO: Add location eg: Doha, Qatar
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

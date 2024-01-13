@@ -34,7 +34,7 @@ export const JobCard = ({ job }: JobCardProps) => {
   ];
   return (
     <Link
-      href={`/companies/jobs/${job.companyId}`}
+      href={`/companies/${job.companyId}/jobs/${job.id}`}
       key={job.id}
       className="flex flex-col gap-4 rounded-md border p-4 hover:shadow-lg"
     >
