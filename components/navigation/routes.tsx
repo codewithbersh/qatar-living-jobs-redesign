@@ -4,17 +4,17 @@ import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 
+export const routes = [
+  {
+    href: "/jobs",
+    label: "Jobs",
+  },
+  {
+    href: "/companies",
+    label: "Companies",
+  },
+];
 export const Routes = () => {
-  const routes = [
-    {
-      href: "/jobs",
-      label: "Jobs",
-    },
-    {
-      href: "/companies",
-      label: "Companies",
-    },
-  ];
   return (
     <>
       {routes.map((route, index) => (
@@ -28,12 +28,9 @@ export const Routes = () => {
         </Button>
       ))}
 
-      {/* TODO: Link to job form */}
       <Button variant="outline" className=" cursor-not-allowed">
         Post a job
       </Button>
-
-      {/* TODO: Update after signOutUrl */}
 
       <Button variant="brand" className=" cursor-not-allowed">
         Sign in

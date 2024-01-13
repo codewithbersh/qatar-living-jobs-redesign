@@ -46,7 +46,7 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
   const totalJobsFound = jobs.length;
 
   return (
-    <div>
+    <div className="pb-48">
       <div className="bg-neutral-100 p-4">
         <div className="mx-auto max-w-4xl space-y-6 py-8">
           <div className="space-y-1">
