@@ -2,10 +2,12 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 interface MarkdownProps {
-  children: string;
+  children: string | null;
 }
 
 export default function Markdown({ children }: MarkdownProps) {
+  if (!children) return;
+
   return (
     <ReactMarkdown
       className="space-y-4"

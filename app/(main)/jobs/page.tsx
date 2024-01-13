@@ -14,8 +14,14 @@ interface JobsPageParams {
 }
 
 const JobsPage = async ({ searchParams }: JobsPageParams) => {
-  const { applicationLocation, companyName, jobType, levelType, search } =
-    searchParams;
+  const {
+    applicationLocation,
+    companyName,
+    jobType,
+    levelType,
+    search,
+    jobCategory,
+  } = searchParams;
 
   // FIXME: No need to add query string for mySQL, see docs: https://www.prisma.io/docs/orm/prisma-client/queries/full-text-search
 
@@ -27,23 +33,34 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
   const jobs = await db.job.findMany({
     where: {
       applicantLocation: applicationLocation,
-      // companyId: companyId,
       company: {
         name: companyName,
       },
+      // category: {
+      //   // has: "",
+      //   // isEmpty: false,
+      // },
       type: jobType,
       level: levelType,
       title: {
         search: queryString,
       },
+      category: {
+        mode: "insensitive",
+        contains: jobCategory,
+      },
     },
     include: {
       company: true,
     },
-    orderBy: {
-      // TODO: Sort filter
-      createdAt: "desc",
-    },
+    orderBy: [
+      {
+        isPromoted: "desc",
+      },
+      {
+        createdAt: "desc",
+      },
+    ],
   });
 
   const totalJobsFound = jobs.length;

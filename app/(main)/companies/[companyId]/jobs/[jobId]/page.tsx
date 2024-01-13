@@ -47,7 +47,6 @@ const JobIdPage = async ({ params: { jobId } }: JobIdPageParams) => {
           />
           <JobDescriptionHeading type="Salary" value={job.salary} />
         </div>
-        B
       </div>
       <Markdown>{job.description}</Markdown>
     </div>

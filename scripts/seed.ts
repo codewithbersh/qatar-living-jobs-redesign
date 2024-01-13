@@ -9,6 +9,10 @@ const companies = [
     websiteUrl: "https://www.qatarairways.com/",
     logoUrl: "qatar-airways-logo.jpg",
     bannerUrl: "qatar-airways-banner.jpg",
+    description: `
+Welcome to Qatar Airways, where excellence meets sophistication in every journey. As the national carrier of the State of Qatar, we take pride in offering an unparalleled travel experience. Our distinguished fleet, combining cutting-edge technology with unmatched comfort, connects you to destinations across the globe seamlessly. Indulge in luxury redefined, where every detail is crafted to perfection, making every moment a celebration of opulence.
+        
+`,
   },
   {
     id: "qatar-national-bank",
@@ -134,6 +138,7 @@ If you are a results-driven marketing professional looking to contribute to the 
     level: "Entry",
     applicantLocation: "In-country",
     salary: "QAR 8,000 – 10,000",
+    category: "CUSTOMER SERVICE",
     description: `
 ## Job Description
 
@@ -169,6 +174,32 @@ If you are a people-oriented individual with a passion for providing exceptional
 
 async function main() {
   try {
+    companies.map(
+      async ({ id, name, websiteUrl, logoUrl, bannerUrl, description }) => {
+        await database.company.upsert({
+          where: {
+            id,
+          },
+          update: {
+            id,
+            name,
+            websiteUrl,
+            logoUrl,
+            bannerUrl,
+            description,
+          },
+          create: {
+            id,
+            name,
+            websiteUrl,
+            logoUrl,
+            bannerUrl,
+            description,
+          },
+        });
+      },
+    );
+
     jobs.map(
       async ({
         id,

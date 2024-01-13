@@ -1,4 +1,9 @@
-import { applicantLocations, jobTypes, levelTypes } from "@/lib/job";
+import {
+  applicantLocations,
+  jobCategories,
+  jobTypes,
+  levelTypes,
+} from "@/lib/job";
 import { db } from "@/lib/db";
 
 import { Filter } from "./filter";
@@ -13,6 +18,11 @@ export const Filters = async () => {
         options={companies}
         valueKey="companyName"
         selectPlaceholder="Company"
+      />
+      <Filter
+        options={jobCategories}
+        valueKey="jobCategory"
+        selectPlaceholder="Category"
       />
       <Filter options={jobTypes} valueKey="jobType" selectPlaceholder="Type" />
       <Filter

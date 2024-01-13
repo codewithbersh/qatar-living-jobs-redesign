@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Prisma } from "@prisma/client";
 import { AlarmClock, CircleDollarSign, Layers, MapPin } from "lucide-react";
 
+import { formatDistanceToNow } from "date-fns";
+
 import { Badge } from "@/components/ui/badge";
 
 interface JobCardProps {
@@ -32,6 +34,11 @@ export const JobCard = ({ job }: JobCardProps) => {
       label: job.applicantLocation,
     },
   ];
+
+  const differenceInDays = formatDistanceToNow(job.createdAt, {
+    addSuffix: true,
+  });
+
   return (
     <Link
       href={`/companies/${job.companyId}/jobs/${job.id}`}
@@ -53,9 +60,15 @@ export const JobCard = ({ job }: JobCardProps) => {
         </div>
 
         {/* TODO: Update badge */}
-        <Badge variant="brand" className="ml-auto">
-          PROMOTED
-        </Badge>
+        {job.isPromoted ? (
+          <Badge variant="brand" className="ml-auto">
+            PROMOTED
+          </Badge>
+        ) : (
+          <span className="ml-auto text-sm text-muted-foreground">
+            {differenceInDays}
+          </span>
+        )}
       </div>
       <div className="flex flex-wrap items-center gap-4 gap-y-1 pl-[62px]">
         {jobFields.map((field) => (

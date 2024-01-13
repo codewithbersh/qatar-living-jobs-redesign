@@ -12,10 +12,11 @@ datasource db {
 model Company {
   id String @id
 
-  name       String
-  websiteUrl String
-  logoUrl    String
-  bannerUrl  String
+  name        String
+  websiteUrl  String
+  logoUrl     String
+  bannerUrl   String
+  description String?
 
   jobs Job[]
 
@@ -30,12 +31,13 @@ model Job {
   company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
 
   title             String
-  description       String @db.Text
+  description       String  @db.Text
   type              String
   level             String
   applicantLocation String
   salary            String
-
+  category          String?
+  isPromoted        Boolean @default(false)
   // TODO: Add Category
   // TODO: Add isPromoted
   // TODO: Add location eg: Doha, Qatar
