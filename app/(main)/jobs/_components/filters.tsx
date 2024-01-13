@@ -11,7 +11,7 @@ export const Filters = async () => {
     <>
       <Filter
         options={companies}
-        valueKey="company"
+        valueKey="companyId"
         selectPlaceholder="Company"
       />
       <Filter options={jobTypes} valueKey="jobType" selectPlaceholder="Type" />

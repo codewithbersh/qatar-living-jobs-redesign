@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -34,6 +35,9 @@ model Job {
   level             String
   applicantLocation String
   salary            String
+
+  // TODO: Add Category
+  // TODO: Add isPromoted
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
