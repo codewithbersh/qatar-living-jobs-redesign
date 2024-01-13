@@ -1,6 +1,6 @@
-export const jobType = ["Full-time", "Part-time", "Contract", "Other"];
+export const jobTypes = ["Full-time", "Part-time", "Contract", "Other"];
 
-export const levelType = [
+export const levelTypes = [
   "Intern",
   "Entry",
   "Mid",
@@ -11,4 +11,4 @@ export const levelType = [
   "Other",
 ];
 
-export const applicantLocation = ["In-country", "International", "Any"];
+export const applicantLocations = ["In-country", "International", "Any"];
