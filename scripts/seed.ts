@@ -170,6 +170,121 @@ Qatar Airways is hiring enthusiastic individuals to join our team as **Customer 
 If you are a people-oriented individual with a passion for providing exceptional customer service, we encourage you to apply for the Customer Service Representative position at Qatar Airways.
     `,
   },
+
+  {
+    id: "woqod-fuel-attendant",
+    companyId: "woqod",
+    title: "Fuel Station Attendant",
+    type: "Full-time",
+    level: "Entry",
+    applicantLocation: "In-country",
+    salary: "QAR 3,000 – 4,000",
+    description: `
+## Job Description
+
+Woqod is looking for dedicated individuals to join our team as **Fuel Station Attendants** at the entry level. As a Fuel Station Attendant, you will play a crucial role in ensuring the smooth and efficient operation of our fuel stations. Responsibilities include dispensing fuel, providing excellent customer service, and maintaining a clean and organized work environment.
+
+### Responsibilities
+
+- Dispense fuel and complete transactions accurately
+- Provide exceptional customer service to fuel station patrons
+- Perform routine checks and maintenance of fuel station equipment
+- Monitor fuel inventory and report any discrepancies
+- Ensure cleanliness and safety standards are maintained at the fuel station
+
+### Requirements
+
+- High school diploma or equivalent
+- Strong customer service and communication skills
+- Ability to handle cash transactions accurately
+- Basic mechanical aptitude for equipment maintenance
+- Attention to detail and commitment to safety
+
+### Benefits
+
+- Competitive salary
+- Training and on-the-job learning opportunities
+- Employee discounts on fuel and merchandise
+- Opportunities for career advancement within the company
+
+If you are a reliable and customer-focused individual seeking a dynamic role in the fuel industry, we invite you to apply for the Fuel Station Attendant position at Woqod.
+      `,
+  },
+  {
+    id: "woqod-customer-service",
+    companyId: "woqod",
+    title: "Customer Service Representative",
+    type: "Full-time",
+    level: "Entry",
+    applicantLocation: "In-country",
+    salary: "QAR 5,000 – 6,000",
+    description: `
+## Job Description
+
+Woqod is seeking enthusiastic individuals to join our team as **Customer Service Representatives** at the entry level. As a Customer Service Representative, you will be the face of our fuel stations, providing exceptional service to customers. Responsibilities include assisting customers with fuel transactions, addressing inquiries, and ensuring a positive overall experience.
+
+### Responsibilities
+
+- Greet and assist customers with fuel transactions
+- Answer inquiries and provide information about products and services
+- Resolve customer concerns and escalate issues when necessary
+- Maintain a clean and organized customer service area
+- Collaborate with the team to ensure smooth operations
+
+### Requirements
+
+- High school diploma or equivalent
+- Strong communication and interpersonal skills
+- Ability to handle customer inquiries and resolve issues
+- Basic computer skills for transaction processing
+- Positive attitude and willingness to learn
+
+### Benefits
+
+- Competitive salary
+- Training and development opportunities
+- Employee discounts
+      `,
+  },
+  {
+    id: "woqod-maintenance-tech",
+    companyId: "woqod",
+    title: "Maintenance Technician",
+    type: "Full-time",
+    level: "Entry",
+    applicantLocation: "In-country",
+    salary: "QAR 4,000 – 5,000",
+    description: `
+## Job Description
+
+Woqod is looking for skilled individuals to join our team as **Maintenance Technicians** at the entry level. As a Maintenance Technician, you will be responsible for the upkeep and maintenance of our fuel stations. This includes routine inspections, repairs, and ensuring that all equipment is in optimal working condition.
+
+### Responsibilities
+
+- Perform routine maintenance and repairs on fuel station equipment
+- Conduct inspections to identify potential issues and address them promptly
+- Collaborate with other team members to coordinate maintenance schedules
+- Ensure compliance with safety standards and regulations
+- Maintain accurate records of maintenance activities
+
+### Requirements
+
+- High school diploma or equivalent
+- Basic knowledge of mechanical and electrical systems
+- Previous experience in maintenance or a related field is a plus
+- Ability to work independently and in a team
+- Strong problem-solving skills
+
+### Benefits
+
+- Competitive salary
+- Training and on-the-job learning opportunities
+- Opportunities for skill development and advancement
+- Employee discounts on fuel and merchandise
+
+If you are a proactive and detail-oriented individual with a knack for maintenance, we encourage you to apply for the Maintenance Technician position at Woqod.
+      `,
+  },
 ];
 
 async function main() {
