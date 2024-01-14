@@ -26,7 +26,11 @@ const JobIdPage = async ({ params: { jobId } }: JobIdPageParams) => {
   return (
     <div className="space-y-8 pb-24">
       <div className="pb-12">
-        <Button variant="ghost" asChild>
+        <Button
+          variant="link"
+          asChild
+          className="p-0 text-muted-foreground hover:text-primary"
+        >
           <Link href={`/companies/${job.companyId}/jobs`}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             View company jobs

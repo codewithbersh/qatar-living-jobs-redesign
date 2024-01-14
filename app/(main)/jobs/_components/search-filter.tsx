@@ -12,7 +12,7 @@ export const SearchFilter = () => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState<string | undefined>("");
 
   const currentQueryStrings = qs.parse(searchParams.toString());
   const currentSearch = searchParams.get("search");
@@ -38,7 +38,7 @@ export const SearchFilter = () => {
   };
 
   useEffect(() => {
-    setValue(currentSearch || undefined);
+    setValue(currentSearch || "");
   }, [currentSearch]);
 
   return (

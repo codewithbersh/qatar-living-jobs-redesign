@@ -4,8 +4,10 @@ import { db } from "@/lib/db";
 
 import { Button } from "@/components/ui/button";
 
+import { validSortByQueries } from "../companies/page";
 import { JobCard } from "./_components/job-card";
 import { JobFilters } from "./_components/job-filters";
+import { SortResults } from "@/components/sort-results";
 
 interface JobsPageParams {
   searchParams: {
@@ -15,7 +17,7 @@ interface JobsPageParams {
 
 const JobsPage = async ({ searchParams }: JobsPageParams) => {
   const {
-    applicationLocation,
+    applicantLocation,
     companyName,
     jobType,
     levelType,
@@ -30,9 +32,14 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
     .filter((word) => word.length > 0)
     .join(" | ");
 
+  const currentSortByQuery = searchParams.sortBy;
+  const sortByQuery = validSortByQueries.find(
+    (query) => query.key === currentSortByQuery,
+  )?.value;
+
   const jobs = await db.job.findMany({
     where: {
-      applicantLocation: applicationLocation,
+      applicantLocation: applicantLocation,
       company: {
         name: companyName,
       },
@@ -58,7 +65,7 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
         isPromoted: "desc",
       },
       {
-        createdAt: "desc",
+        createdAt: sortByQuery,
       },
     ],
   });
@@ -90,10 +97,9 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
             </h1>
 
             {/* TODO: Sort Button */}
-            <Button variant="outline">
-              <ArrowUpNarrowWide className="mr-2 h-4 w-4" />
-              Most recent
-            </Button>
+            <div className="ml-auto">
+              <SortResults />
+            </div>
           </div>
           <div className="flex flex-col gap-4">
             {jobs.map((job) => (

@@ -12,7 +12,7 @@ export const SearchCompanyFilter = () => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState<string | undefined>("");
 
   const currentQueryStrings = qs.parse(searchParams.toString());
   const currentSearch = searchParams.get("search");

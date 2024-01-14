@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { JobFilters } from "../jobs/_components/job-filters";
 import { SearchCompanyFilter } from "./_components/search-company-filter";
 import { CompanyCard } from "./_components/company-card";
+import { SortResults } from "@/components/sort-results";
 
 interface CompaniesPageParams {
   searchParams: {
@@ -9,11 +10,27 @@ interface CompaniesPageParams {
   };
 }
 
+export const validSortByQueries = [
+  {
+    key: "createdAtAsc",
+    value: "asc" as const,
+  },
+  {
+    key: "createdAtDesc",
+    value: "desc" as const,
+  },
+];
+
 const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
   const queryString = searchParams.search
     ?.split(" ")
     .filter((word) => word.length > 0)
     .join(" | ");
+
+  const currentSortByQuery = searchParams.sortBy;
+  const sortByQuery = validSortByQueries.find(
+    (query) => query.key === currentSortByQuery,
+  )?.value;
 
   const companies = await db.company.findMany({
     where: {
@@ -33,6 +50,9 @@ const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
         jobs: {
           _count: "desc",
         },
+      },
+      {
+        createdAt: sortByQuery,
       },
     ],
   });
@@ -56,6 +76,9 @@ const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
       </div>
       <div className="p-4">
         <div className="mx-auto flex max-w-4xl flex-col gap-4">
+          <div className="ml-auto">
+            <SortResults />
+          </div>
           {companies.map((company) => (
             <CompanyCard key={company.id} company={company} />
           ))}
