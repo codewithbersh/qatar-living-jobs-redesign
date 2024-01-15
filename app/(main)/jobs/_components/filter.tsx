@@ -32,6 +32,7 @@ export const Filter = ({
 
     const query = {
       ...currentQueryStrings,
+      page: undefined,
       [valueKey]: value,
     };
 

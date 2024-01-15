@@ -1,19 +1,19 @@
-import { ArrowUpNarrowWide } from "lucide-react";
-
 import { db } from "@/lib/db";
 
-import { Button } from "@/components/ui/button";
-
+import { Pagination } from "@/components/pagination";
+import { SortResults } from "@/components/sort-results";
 import { validSortByQueries } from "../companies/page";
+
 import { JobCard } from "./_components/job-card";
 import { JobFilters } from "./_components/job-filters";
-import { SortResults } from "@/components/sort-results";
 
 interface JobsPageParams {
   searchParams: {
     [key: string]: string | undefined;
   };
 }
+
+const JOBS_LIMIT_PER_PAGE = 2;
 
 const JobsPage = async ({ searchParams }: JobsPageParams) => {
   const {
@@ -36,6 +36,42 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
   const sortByQuery = validSortByQueries.find(
     (query) => query.key === currentSortByQuery,
   )?.value;
+
+  const currentPage =
+    typeof searchParams.page === "string"
+      ? Number(searchParams.page) >= 1
+        ? Number(searchParams.page)
+        : 1
+      : 1;
+
+  const skip = (currentPage - 1) * JOBS_LIMIT_PER_PAGE;
+
+  const totalJobsFound = await db.job.count({
+    where: {
+      applicantLocation: applicantLocation,
+      company: {
+        name: companyName,
+      },
+
+      type: jobType,
+      level: levelType,
+      title: {
+        search: queryString,
+      },
+      category: {
+        mode: "insensitive",
+        contains: jobCategory,
+      },
+    },
+    orderBy: [
+      {
+        isPromoted: "desc",
+      },
+      {
+        createdAt: sortByQuery,
+      },
+    ],
+  });
 
   const jobs = await db.job.findMany({
     where: {
@@ -68,9 +104,9 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
         createdAt: sortByQuery,
       },
     ],
+    take: JOBS_LIMIT_PER_PAGE,
+    skip,
   });
-
-  const totalJobsFound = jobs.length;
 
   return (
     <div className="pb-48">
@@ -90,13 +126,12 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
         </div>
       </div>
       <div className="p-4">
-        <div className="mx-auto max-w-4xl space-y-6 py-8">
+        <div className="mx-auto flex max-w-4xl flex-col gap-6 py-8">
           <div className="flex items-center justify-between">
             <h1 className="font-bold leading-none">
               {totalJobsFound} Jobs found
             </h1>
 
-            {/* TODO: Sort Button */}
             <div className="ml-auto">
               <SortResults />
             </div>
@@ -106,6 +141,11 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
               <JobCard job={job} key={job.id} />
             ))}
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalResults={totalJobsFound}
+            limit={JOBS_LIMIT_PER_PAGE}
+          />
         </div>
       </div>
     </div>

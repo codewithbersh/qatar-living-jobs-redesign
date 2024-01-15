@@ -11,8 +11,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-interface SortResultsProps {}
-
 const sortFields = [
   {
     value: "createdAtDesc" as const,

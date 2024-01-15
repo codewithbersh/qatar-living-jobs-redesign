@@ -21,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("bg-background antialiased", font.className)}>
+        {/* <AlertProjectInfo /> */}
         <main>{children}</main>
       </body>
     </html>

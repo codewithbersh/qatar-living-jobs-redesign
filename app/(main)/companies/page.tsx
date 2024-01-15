@@ -1,8 +1,10 @@
 import { db } from "@/lib/db";
-import { JobFilters } from "../jobs/_components/job-filters";
+
+import { Pagination } from "@/components/pagination";
+import { SortResults } from "@/components/sort-results";
+
 import { SearchCompanyFilter } from "./_components/search-company-filter";
 import { CompanyCard } from "./_components/company-card";
-import { SortResults } from "@/components/sort-results";
 
 interface CompaniesPageParams {
   searchParams: {
@@ -32,6 +34,35 @@ const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
     (query) => query.key === currentSortByQuery,
   )?.value;
 
+  const currentPage =
+    typeof searchParams.page === "string"
+      ? Number(searchParams.page) >= 1
+        ? Number(searchParams.page)
+        : 1
+      : 1;
+
+  const COMPANIES_LIMIT_PER_PAGE = 2;
+
+  const skip = (currentPage - 1) * COMPANIES_LIMIT_PER_PAGE;
+
+  const totalCompaniesFound = await db.company.count({
+    where: {
+      name: {
+        search: queryString,
+      },
+    },
+    orderBy: [
+      {
+        jobs: {
+          _count: "desc",
+        },
+      },
+      {
+        createdAt: sortByQuery,
+      },
+    ],
+  });
+
   const companies = await db.company.findMany({
     where: {
       name: {
@@ -55,6 +86,8 @@ const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
         createdAt: sortByQuery,
       },
     ],
+    skip,
+    take: COMPANIES_LIMIT_PER_PAGE,
   });
 
   return (
@@ -82,6 +115,11 @@ const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
           {companies.map((company) => (
             <CompanyCard key={company.id} company={company} />
           ))}
+          <Pagination
+            currentPage={currentPage}
+            limit={COMPANIES_LIMIT_PER_PAGE}
+            totalResults={totalCompaniesFound}
+          />
         </div>
       </div>
     </div>
