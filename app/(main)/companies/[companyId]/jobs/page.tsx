@@ -9,6 +9,7 @@ import { JobCard } from "@/app/(main)/jobs/_components/job-card";
 import { SortResults } from "@/components/sort-results";
 import { Button } from "@/components/ui/button";
 import Markdown from "@/components/ui/markdown";
+import { NoResults } from "@/components/no-results";
 
 interface CompanyJobsPageParams {
   params: {
@@ -71,6 +72,7 @@ const CompanyJobsPage = async ({
             <SortResults />
           </div>
         </div>
+        {!company.jobs.length && <NoResults />}
         {company.jobs.map((job) => (
           <JobCard job={job} key={job.id} />
         ))}

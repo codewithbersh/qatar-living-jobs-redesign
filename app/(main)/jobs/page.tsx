@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 
 import { Pagination } from "@/components/pagination";
 import { SortResults } from "@/components/sort-results";
+import { NoResults } from "@/components/no-results";
 import { validSortByQueries } from "../companies/page";
 
 import { JobCard } from "./_components/job-card";
@@ -79,10 +80,6 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
       company: {
         name: companyName,
       },
-      // category: {
-      //   // has: "",
-      //   // isEmpty: false,
-      // },
       type: jobType,
       level: levelType,
       title: {
@@ -137,6 +134,7 @@ const JobsPage = async ({ searchParams }: JobsPageParams) => {
             </div>
           </div>
           <div className="flex flex-col gap-4">
+            {!totalJobsFound && <NoResults />}
             {jobs.map((job) => (
               <JobCard job={job} key={job.id} />
             ))}
