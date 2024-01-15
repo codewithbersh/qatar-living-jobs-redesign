@@ -22,6 +22,8 @@ model Company {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("qatar_living_company")
 }
 
 model Job {
@@ -38,12 +40,10 @@ model Job {
   salary            String
   category          String?
   isPromoted        Boolean @default(false)
-  // TODO: Add Category
-  // TODO: Add isPromoted
-  // TODO: Add location eg: Doha, Qatar
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([companyId])
+  @@map("qatar_living_job")
 }
