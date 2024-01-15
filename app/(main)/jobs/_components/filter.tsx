@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 interface FilterProps {
   options: string[];
@@ -59,7 +60,14 @@ export const Filter = ({
       value={currentValue || ""}
     >
       <SelectTrigger>
-        <SelectValue placeholder={selectPlaceholder} />
+        <div
+          className={cn(
+            "line-clamp-1 text-muted-foreground",
+            currentValue && "text-primary",
+          )}
+        >
+          {currentValue || selectPlaceholder}
+        </div>
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (
