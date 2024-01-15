@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 
 import { Pagination } from "@/components/pagination";
 import { SortResults } from "@/components/sort-results";
+import { NoResults } from "@/components/no-results";
 
 import { SearchCompanyFilter } from "./_components/search-company-filter";
 import { CompanyCard } from "./_components/company-card";
@@ -109,9 +110,15 @@ const CompaniesPage = async ({ searchParams }: CompaniesPageParams) => {
       </div>
       <div className="p-4">
         <div className="mx-auto flex max-w-4xl flex-col gap-4">
-          <div className="ml-auto">
-            <SortResults />
+          <div className="flex items-center justify-between">
+            <h1 className="font-bold leading-none">
+              {totalCompaniesFound} Companies found
+            </h1>
+            <div className="ml-auto">
+              <SortResults />
+            </div>
           </div>
+          {!totalCompaniesFound && <NoResults />}
           {companies.map((company) => (
             <CompanyCard key={company.id} company={company} />
           ))}

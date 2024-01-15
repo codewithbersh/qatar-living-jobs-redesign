@@ -1,20 +1,33 @@
+import { notFound } from "next/navigation";
+import { Share } from "lucide-react";
+
+import { db } from "@/lib/db";
+
+import { validSortByQueries } from "../../page";
+
 import { JobCard } from "@/app/(main)/jobs/_components/job-card";
+import { SortResults } from "@/components/sort-results";
 import { Button } from "@/components/ui/button";
 import Markdown from "@/components/ui/markdown";
-import { db } from "@/lib/db";
-import { ArrowUpNarrowWide, ChevronDown, Share } from "lucide-react";
-
-import { notFound } from "next/navigation";
 
 interface CompanyJobsPageParams {
   params: {
     companyId: string;
   };
+  searchParams: {
+    [value: string]: string;
+  };
 }
 
 const CompanyJobsPage = async ({
   params: { companyId },
+  searchParams,
 }: CompanyJobsPageParams) => {
+  const currentSortByQuery = searchParams.sortBy;
+  const sortByQuery = validSortByQueries.find(
+    (query) => query.key === currentSortByQuery,
+  )?.value;
+
   const company = await db.company.findUnique({
     where: {
       id: companyId,
@@ -24,6 +37,14 @@ const CompanyJobsPage = async ({
         include: {
           company: true,
         },
+        orderBy: [
+          {
+            isPromoted: "desc",
+          },
+          {
+            createdAt: sortByQuery,
+          },
+        ],
       },
     },
   });
@@ -42,11 +63,14 @@ const CompanyJobsPage = async ({
       </div>
       <Markdown>{company.description}</Markdown>
       <div className="flex flex-col gap-4 py-12">
-        <Button variant="outline" className="mb-4 ml-auto mt-6 w-fit">
-          <ArrowUpNarrowWide className="mr-2 h-4 w-4" />
-          Sort by
-          <ChevronDown className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="flex items-center justify-between">
+          <h1 className="font-bold leading-none">
+            {company.jobs.length} Jobs found
+          </h1>
+          <div className="ml-auto">
+            <SortResults />
+          </div>
+        </div>
         {company.jobs.map((job) => (
           <JobCard job={job} key={job.id} />
         ))}
