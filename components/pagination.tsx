@@ -68,7 +68,6 @@ export const Pagination = ({
               page: hasNoNextPage ? currentPage : currentPage + 1,
             },
           }}
-          scroll={false}
         >
           Next
           <ChevronRight className="ml-2 h-4 w-4" />

@@ -14,7 +14,7 @@ interface JobsPageParams {
   };
 }
 
-const JOBS_LIMIT_PER_PAGE = 2;
+const JOBS_LIMIT_PER_PAGE = 7;
 
 const JobsPage = async ({ searchParams }: JobsPageParams) => {
   const {
